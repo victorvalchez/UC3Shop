@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de Compras</title>
+</head>
+<body>
+  <h1>Carrito de Compras</h1>
+
+  <div id="cartItems"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    socket.on('updateCart', (cartItems) => {
+      const cartItemsDiv = document.getElementById('cartItems');
+      cartItemsDiv.innerHTML = '';
+
+      if (cartItems.length === 0) {
+        cartItemsDiv.innerHTML = '<p>El carrito está vacío</p>';
+      } else {
+        cartItems.forEach((item, index) => {
+          const itemDiv = document.createElement('div');
+          itemDiv.innerHTML = `
+            <p>Producto: ${item.product}, Precio: ${item.price}</p>
+            <button onclick="removeItem(${index})">Eliminar</button>
+          `;
+          cartItemsDiv.appendChild(itemDiv);
+        });
+      }
+    });
+
+    function addItem() {
+      const product = prompt('Ingrese el nombre del producto:');
+      const price = parseFloat(prompt('Ingrese el precio del producto:'));
+
+      if (product && !isNaN(price)) {
+        socket.emit('addItem', { product, price });
+      } else {
+        alert('Por favor ingrese un nombre de producto válido y un precio numérico.');
+      }
+    }
+
+    function removeItem(index) {
+      socket.emit('removeItem', index);
+    }
+
+    function clearCart() {
+      socket.emit('clearCart');
+    }
+  </script>
+</body>
+</html>
