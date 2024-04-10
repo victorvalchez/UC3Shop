@@ -4,15 +4,24 @@ Una aplicación para utlizar tu móvil como método para gestionar tus compras e
 
 
 ## Usage
-Clonar el repositorio `https://github.com/victorvalchez/UC3Shop/` en tu entorno de desarrollo preferido.
+Clonar el repositorio [`https://github.com/victorvalchez/UC3Shop/`](https://github.com/victorvalchez/UC3Shop/) en tu entorno de desarrollo preferido.
 
-Abrir la carpeta del proyecto `cd UC3Shop`
+Abrir la carpeta del proyecto 
+```
+cd UC3Shop
+```
 
-Instalar todas las dependencias con `npm install`
+Instalar todas las dependencias con
+```
+npm install
+```
 
-Ejecutar `nodemon app` para iniciar la aplicación
+Ejecutar el siguiente comando para iniciar la aplicación
+```
+nodemon app
+```
 
-Dirigirse a `http://localhost:3000` y conectar nuestro dispositivo móvil habiendo activado previamente la depuración USB
+Dirigirse a [`http://localhost:3000`](http://localhost:3000) y conectar nuestro dispositivo móvil habiendo activado previamente la depuración USB
 
 
 ## Authors
