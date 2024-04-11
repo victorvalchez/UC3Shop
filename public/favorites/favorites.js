@@ -1,15 +1,14 @@
-const video = document.getElementById('preview');
-
 const socket = io();
 
+// Emitir el evento 'showFavorites' cuando la página se carga
 window.onload = function() {
-  socket.emit('getCart');
+  socket.emit('showFavorites');
 };
 
-socket.on('updateCart', (cartItems) => {
-  const cartItemsDiv = document.getElementById('cartItems');
-  cartItemsDiv.innerHTML = '';
-  cartItems.forEach(item => {
+socket.on('updateFavorites', (favoriteItems) => {
+  const favoriteItemsDiv = document.getElementById('favoriteItems');
+  favoriteItemsDiv.innerHTML = '';
+  favoriteItems.forEach(item => {
     console.log(item);
     const itemDiv = document.createElement('div');
     itemDiv.className = 'item';
@@ -51,27 +50,6 @@ socket.on('updateCart', (cartItems) => {
     itemDiv.appendChild(img);
     itemDiv.appendChild(textDiv);
 
-    cartItemsDiv.appendChild(itemDiv);
+    favoriteItemsDiv.appendChild(itemDiv);
   });
 });
-
-document.getElementById('addItemForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-  const productName = document.getElementById('productName').value;
-  const productPrice = parseFloat(document.getElementById('productPrice').value);
-
-  if (productName && !isNaN(productPrice)) {
-    socket.emit('addItem', { product: productName, price: productPrice });
-    document.getElementById('addItemForm').reset();
-  } else {
-    alert('Por favor ingrese un nombre de producto válido y un precio numérico.');
-  }
-});
-
-function removeItem(index) {
-  socket.emit('removeItem', index);
-}
-
-function clearCart() {
-  socket.emit('clearCart');
-}

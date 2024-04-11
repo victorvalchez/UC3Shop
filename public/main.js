@@ -1,3 +1,5 @@
+// Codigo que implementa la funcionalidad de escanear un código QR y enviarlo al servidor
+
 const video = document.getElementById('preview');
 const scanButton = document.getElementById('scanButton');
 

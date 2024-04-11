@@ -10,13 +10,20 @@ const io = socketIo(server);
 // Sirve archivos estáticos desde la carpeta 'public'
 app.use(express.static('public')); // Para servir el index.html
 app.use(express.static('public/cart')); // Para servir el cart.html
+app.use(express.static('public/favorites')); // Para servir el favorites.html
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
 
+// Para servir el cart.html
 app.get('/cart.html', function(req, res) {
   res.sendFile(__dirname + '/public/cart/cart.html');
+});
+
+// Para servir el favorites.html
+app.get('/favorites.html', function(req, res) {
+  res.sendFile(__dirname + '/public/favorites/favorites.html');
 });
 
 function saveCartItems() {
@@ -54,7 +61,15 @@ io.on('connection', (socket) => {
     console.log('Un cliente se ha conectado');
 
     // Emitir el estado actual del carrito cuando un cliente se conecta
-    socket.emit('updateCart', cartItems);
+    socket.on('getCart', () => {
+      io.emit('updateCart', cartItems);
+    });
+
+    // Manejar la solicitud de mostrar los artículos favoritos
+    socket.on('showFavorites', () => {
+      const favoriteItems = cartItems.filter(item => item.isFavorite);
+      io.emit('updateFavorites', favoriteItems);
+    });
 
     // Manejar la adición de un nuevo ítem al carrito
     socket.on('addItem', (item) => {
@@ -79,6 +94,15 @@ io.on('connection', (socket) => {
         if (err) throw err;
         console.log('El carrito ha sido limpiado y los cambios se han guardado en el archivo cartItems.json.');
       });
+    });
+
+    socket.on('updateItem', (updatedItem) => {
+      const index = cartItems.findIndex(item => item.product === updatedItem.product);
+      if (index !== -1) {
+        cartItems[index] = updatedItem;
+        io.emit('updateCart', cartItems);
+        saveCartItems();
+      }
     });
 
     socket.on('disconnect', () => {
