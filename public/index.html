@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,14 @@
 </head>
 <body>
     <h1>UC3Shop</h1>
+
+    <video id="preview" style="display: none;"></video>
+    <button id="scanButton">Escanear Etiqueta</button>
+
     <button onclick="window.location.href='./cart.html'">Carrito</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.rawgit.com/cozmo/jsQR/master/dist/jsQR.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
