@@ -40,3 +40,27 @@ scanButton.addEventListener('click', function() {
 });
 
 const socket = io();
+
+// Funcion para obtener resultados de busqueda
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const query = document.getElementById('searchInput').value;
+  socket.emit('searchProducts', query);
+});
+
+socket.on('searchResults', (products) => {
+  console.log(products);
+  const resultsDiv = document.getElementById('searchResults');
+  resultsDiv.innerHTML = '';
+  products.forEach(product => {
+    const productDiv = document.createElement('div');
+    productDiv.textContent = product.product + ' - ' + product.price + '€';
+    const addButton = document.createElement('button');
+    addButton.textContent = 'Añadir al carrito';
+    addButton.addEventListener('click', function() {
+      socket.emit('addItem', product);
+    });
+    productDiv.appendChild(addButton);
+    resultsDiv.appendChild(productDiv);
+  });
+});

@@ -12,6 +12,9 @@ app.use(express.static('public')); // Para servir el index.html
 app.use(express.static('public/cart')); // Para servir el cart.html
 app.use(express.static('public/favorites')); // Para servir el favorites.html
 
+// Para coger todos los productos disponibles
+let products = require('./products.json');
+
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
@@ -106,13 +109,29 @@ io.on('connection', (socket) => {
     // Manejar la adición de un artículo a favoritos
     socket.on('addToFavorites', (item) => {
       // Verificar si el artículo ya está en la lista de favoritos
-      const existingItem = favoriteItems.find(favItem => favItem.id === item.id);
+      const existingItem = favoriteItems.find(favItem => favItem.product === item.product);
+      console.log(existingItem);
       
       if (!existingItem) {
         // Si el artículo no está en la lista de favoritos, añadirlo
         favoriteItems.push(item);
         fs.writeFileSync('favoriteItems.json', JSON.stringify(favoriteItems));
+        io.emit('updateFavorites', favoriteItems);
+        console.log('El artículo ha sido añadido a la lista de favoritos.');
       }
+    });
+
+    // Manejar la eliminación de un artículo de favoritos
+    socket.on('removeFromFavorites', (index) => {
+      favoriteItems.splice(index, 1);
+      fs.writeFileSync('favoriteItems.json', JSON.stringify(favoriteItems));
+      io.emit('updateFavorites', favoriteItems);
+    });
+
+    // Manejar la búsqueda de productos
+    socket.on('searchProducts', (query) => {
+      const results = products.filter(product => product.product.toLowerCase().includes(query.toLowerCase()));
+      io.emit('searchResults', results);
     });
     
     // Manejar la eliminación de un ítem del carrito

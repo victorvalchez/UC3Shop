@@ -31,6 +31,7 @@ socket.on('updateFavorites', (favoriteItems) => {
         socket.emit('addToFavorites', item); // Emitir el evento 'addToFavorites' cuando un artículo se marca como favorito
       } else {
         img.style.border = '';
+        socket.emit('removeFromFavorites', favoriteItems.indexOf(item));
       }
       socket.emit('updateItem', item);
     });

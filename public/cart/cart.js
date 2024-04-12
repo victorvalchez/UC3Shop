@@ -24,14 +24,14 @@ socket.on('updateCart', (cartItems) => {
       img.style.border = '2px solid red';
     }
 
-    // Añade un evento de doble clic a la imagen
     img.addEventListener('dblclick', function() {
       item.isFavorite = !item.isFavorite;
       if (item.isFavorite) {
         img.style.border = '2px solid red';
-        socket.emit('addToFavorites', item); // Emitir el evento 'addToFavorites' cuando un artículo se marca como favorito
+        socket.emit('addToFavorites', item);
       } else {
         img.style.border = '';
+        socket.emit('removeFromFavorites', cartItems.indexOf(item));
       }
       socket.emit('updateItem', item);
     });
