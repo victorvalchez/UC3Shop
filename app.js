@@ -33,6 +33,7 @@ function saveCartItems() {
   });
 }
 
+// Para almacenar los productos del carrito
 fs.readFile('cartItems.json', (err, data) => {
   if (err) {
     if (err.code === 'ENOENT') {
@@ -57,6 +58,31 @@ fs.readFile('cartItems.json', (err, data) => {
   }
 });
 
+// Array para almacenar los favoritos
+fs.readFile('favoriteItems.json', (err, data) => {
+  if (err) {
+    if (err.code === 'ENOENT') {
+      // El archivo no existe, crea uno nuevo con un array vacío
+      fs.writeFile('favoriteItems.json', JSON.stringify([]), (err) => {
+        if (err) throw err;
+        // El archivo ha sido creado, ahora puedes leerlo
+        fs.readFile('favoriteItems.json', (err, data) => {
+          if (err) throw err;
+          if (data) {
+            cartItems = JSON.parse(data);
+          }
+        });
+      });
+    } else {
+      // Otro error ocurrió
+      throw err;
+    }
+  } else if (data) {
+    // El archivo existe, analiza los datos
+    favoriteItems = JSON.parse(data);
+  }
+});
+
 io.on('connection', (socket) => {
     console.log('Un cliente se ha conectado');
 
@@ -67,7 +93,6 @@ io.on('connection', (socket) => {
 
     // Manejar la solicitud de mostrar los artículos favoritos
     socket.on('showFavorites', () => {
-      const favoriteItems = cartItems.filter(item => item.isFavorite);
       io.emit('updateFavorites', favoriteItems);
     });
 
@@ -76,6 +101,18 @@ io.on('connection', (socket) => {
       cartItems.push(item);
       io.emit('updateCart', cartItems);
       saveCartItems();
+    });
+
+    // Manejar la adición de un artículo a favoritos
+    socket.on('addToFavorites', (item) => {
+      // Verificar si el artículo ya está en la lista de favoritos
+      const existingItem = favoriteItems.find(favItem => favItem.id === item.id);
+      
+      if (!existingItem) {
+        // Si el artículo no está en la lista de favoritos, añadirlo
+        favoriteItems.push(item);
+        fs.writeFileSync('favoriteItems.json', JSON.stringify(favoriteItems));
+      }
     });
     
     // Manejar la eliminación de un ítem del carrito

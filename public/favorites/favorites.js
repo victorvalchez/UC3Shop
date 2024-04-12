@@ -28,6 +28,7 @@ socket.on('updateFavorites', (favoriteItems) => {
       item.isFavorite = !item.isFavorite;
       if (item.isFavorite) {
         img.style.border = '2px solid red';
+        socket.emit('addToFavorites', item); // Emitir el evento 'addToFavorites' cuando un artículo se marca como favorito
       } else {
         img.style.border = '';
       }
