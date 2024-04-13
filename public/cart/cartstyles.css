@@ -9,68 +9,69 @@ body {
     font-family: Arial, sans-serif;
   }
   
-  h1 {
-    color: #333;
-  }
-  
-  #cartItems {
-    margin: 20px 0;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  label, input {
-    margin: 5px 0;
-  }
-  
-  button {
-    padding: 10px 20px;
-    margin-top: 20px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
+h1 {
+  color: #333;
+}
 
-  #cartItems {
-    display: block;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  
-  .item {
-    display: flex;
-    align-items: center;
-  }
-  
-  .item-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-right: 20px;
-  }
-  
-  .item-name, .item-price {
-    display: block;
-    margin: 0;
-  }
+#cartItems {
+  margin: 20px 0;
+}
 
-  .cart-total {
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: center; /* Cambia a center para centrar el texto */
-    margin-top: 20px;
-    order: 1; /* Asegura que el total se muestre primero */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label, input {
+  margin: 5px 0;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#cartItems {
+  display: block;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  overflow: auto;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.item-name, .item-price {
+  display: block;
+  margin: 0;
+}
+
+.cart-total {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center; /* Cambia a center para centrar el texto */
+  margin-top: 20px;
+  order: 1; /* Asegura que el total se muestre primero */
 }
 
 .buttons {
@@ -80,4 +81,9 @@ body {
   margin-top: 20px;
   align-items: center;
   order: 2;
+}
+
+#totalPrice {
+  font-size: 20px; /* Ajusta el tamaño del texto */
+  font-weight: bold; /* Hace el texto en negrita */
 }

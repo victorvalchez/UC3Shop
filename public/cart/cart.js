@@ -41,8 +41,6 @@ socket.on('updateCart', async (cartItems) => {
     sortOptions.addEventListener('change', handleSortOptionsChange);
     sortOptions._hasChangeEvent = true;
   }
-
-  console.log("Los articulos: ", cartItems);
   
   cartItems.forEach(item => {
     const itemDiv = document.createElement('div');
@@ -61,21 +59,7 @@ socket.on('updateCart', async (cartItems) => {
       img.style.border = '2px solid red';
     }
     
-    /* Evento para añadir o quitar un producto de los favoritos
-    img.addEventListener('dblclick', function() {
-      item.isFavorite = !item.isFavorite;
-      if (item.isFavorite) {
-        img.style.border = '2px solid red';
-        socket.emit('addToFavorites', item);
-      } else {
-        img.style.border = '';
-        socket.emit('removeFromFavorites', cartItems.indexOf(item));
-      }
-      socket.emit('updateItem', item);
-    });*/
-
     // Evento para eliminar un producto del carrito
-
     img.addEventListener('touchstart', function(event) {
       event.preventDefault(); // Prevent the default touch event
 
@@ -138,6 +122,10 @@ socket.on('updateCart', async (cartItems) => {
     name.textContent = `Producto: ${item.product}`;
     name.className = 'item-name';
 
+    const type = document.createElement('p');
+    type.textContent = `Tipo: ${item.type || 'No especificado'}`;
+    type.className = 'item-type';
+
     const price = document.createElement('p');
     price.textContent = `Precio: ${item.price}€`;
     price.className = 'item-price';
@@ -150,6 +138,7 @@ socket.on('updateCart', async (cartItems) => {
     total += item.price * item.quantity; // Suma el precio del producto al total
 
     textDiv.appendChild(name);
+    textDiv.appendChild(type);
     textDiv.appendChild(price);
     textDiv.appendChild(quantity); // Añadir la cantidad al div de texto
 
@@ -159,13 +148,9 @@ socket.on('updateCart', async (cartItems) => {
     cartItemsDiv.appendChild(itemDiv);
   });
 
-  // Crear un elemento p para mostrar el total
-  const totalElement = document.createElement('p');
-  totalElement.textContent = `Total: ${total.toFixed(2)}€`; // Mostrar el total con 2 decimales
-  totalElement.className = 'cart-total';
+  const totalPriceDiv = document.getElementById('totalPrice');
+  totalPriceDiv.textContent = `Precio total: ${total}€`;
 
-  // Añadir el total al final de cartItemsDiv
-  cartItemsDiv.appendChild(totalElement);
 });
 
 function clearCart() {

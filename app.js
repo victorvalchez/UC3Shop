@@ -138,13 +138,12 @@ io.on('connection', (socket) => {
   socket.on('addToFavorites', (item) => {
     // Verificar si el artículo ya está en la lista de favoritos
     const existingItem = favoriteItems.find(favItem => favItem.product === item.product);
-    console.log(existingItem);
     
     if (!existingItem) {
       // Si el artículo no está en la lista de favoritos, añadirlo
       favoriteItems.push(item);
       fs.writeFileSync('favoriteItems.json', JSON.stringify(favoriteItems));
-      io.emit('updateFavorites', favoriteItems);
+      // io.emit('updateFavorites', favoriteItems);
       console.log('El artículo ha sido añadido a la lista de favoritos.');
     }
   });
