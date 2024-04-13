@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  text-align: center;
+}
+
+.message {
+  margin-top: 0px;
+  color: #333;
+}
+
+body > :first-child {
+  margin-top: 115px;
+}
+
+img {
+  width: 85%; /* Hace que la imagen ocupe el 50% del ancho de la pantalla */
+  margin-top: 10%; /* Empuja la imagen hacia abajo un 20% de la altura de la pantalla */
+}

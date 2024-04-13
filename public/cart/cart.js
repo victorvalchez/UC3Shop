@@ -143,23 +143,58 @@ socket.on('updateCart', async (cartItems) => {
 
 });
 
-document.getElementById('addItemForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-  const productName = document.getElementById('productName').value;
-  const productPrice = parseFloat(document.getElementById('productPrice').value);
-
-  if (productName && !isNaN(productPrice)) {
-    socket.emit('addItem', { product: productName, price: productPrice });
-    document.getElementById('addItemForm').reset();
-  } else {
-    alert('Por favor ingrese un nombre de producto válido y un precio numérico.');
-  }
-});
-
-function removeItem(index) {
-  socket.emit('removeItem', index);
-}
-
 function clearCart() {
   socket.emit('clearCart');
 }
+
+// Definir los comandos de voz
+var SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+var SpeechGrammarList =
+  window.SpeechGrammarList || window.webkitSpeechGrammarList;
+
+const recognition = new SpeechRecognition();
+const speechRecognitionList = new SpeechGrammarList();
+
+const commands = { "finalizar compra": "../payment/payment.html" };
+const grammar = "#JSGF V1.0; grammar commands; public = " + Object.keys(commands).join(" | ") + " ;";
+
+speechRecognitionList.addFromString(grammar, 1);
+recognition.grammars = speechRecognitionList;
+recognition.continuous = true;
+recognition.lang = "es-ES";
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+
+recognition.start();
+
+recognition.onresult = function(event) {
+  const result = event.results[0][0].transcript;
+  console.log(`Resultado: ${result}.`);
+  console.log(`Confianza: ${event.results[0][0].confidence}`);
+
+  if (commands[result]) {
+    window.location.href = commands[result];
+  }
+};
+
+recognition.onerror = function(event) {
+  console.log(`Error occurred in recognition: ${event.error}`);
+};
+
+recognition.onspeechend = function() {
+  recognition.stop();
+};
+
+recognition.onend = function() {
+  recognition.start();
+}
+
+recognition.onnomatch = function(event) {
+  console.log("No he reconocido el comando");
+  recognition.stop();
+};
+
+recognition.onerror = function(event) {
+  console.log(`Error occurred in recognition: ${event.error}`);
+};

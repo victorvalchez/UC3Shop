@@ -11,6 +11,7 @@ const io = socketIo(server);
 app.use(express.static('public')); // Para servir el index.html
 app.use(express.static('public/cart')); // Para servir el cart.html
 app.use(express.static('public/favorites')); // Para servir el favorites.html
+app.use(express.static('public/payment')); // Para servir el payment.html
 
 // Para coger todos los productos disponibles
 let products = require('./products.json');
@@ -27,6 +28,11 @@ app.get('/cart.html', function(req, res) {
 // Para servir el favorites.html
 app.get('/favorites.html', function(req, res) {
   res.sendFile(__dirname + '/public/favorites/favorites.html');
+});
+
+// Para la pagina de pago
+app.get('/payment.html', function(req, res) {
+  res.sendFile(__dirname + '/public/payment/payment.html');
 });
 
 app.get('/favorites', (req, res) => {
