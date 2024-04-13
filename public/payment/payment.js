@@ -15,7 +15,9 @@ function handleOrientation(event) {
 
 // Si tocamos la pantalla 3 veces se volverá a la página principal
 let touches = 0;
-document.addEventListener('touchstart', function() {
+document.addEventListener('touchstart', function(event) {
+  // Prevenir el comportamiento predeterminado
+  event.preventDefault();
   touches++;
   if (touches === 3) {
     window.location.href = '../index.html';

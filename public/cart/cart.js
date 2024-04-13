@@ -184,9 +184,15 @@ recognition.onresult = function(event) {
   console.log(`Confianza: ${event.results[0][0].confidence}`);
 
   if (commands[result]) {
-    window.location.href = commands[result];
-    // Limpiar el carrito después de finalizar la compra
-    clearCart();
+    // Comprobar si hay artículos en el carrito
+    console.log(cartItems.length);
+    if (cartItems.length === undefined) {
+      alert('No hay artículos en el carrito.');
+    } else {
+      window.location.href = commands[result];
+      // Limpiar el carrito después de finalizar la compra
+      clearCart();
+    }
   }
 };
 
