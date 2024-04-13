@@ -10,6 +10,9 @@ socket.on('updateCart', async (cartItems) => {
   const cartItemsDiv = document.getElementById('cartItems');
   cartItemsDiv.innerHTML = '';
   let total = 0; // Variable para almacenar el total
+  let timer; // Variable para almacenar el temporizador
+  let isLongPress = false; // Variable para comprobar si se ha mantenido pulsado
+  let touchCount = 0; // Variable para contar los toques
 
   // Obtener los favoritos actuales
   const response = await fetch('/favorites');
@@ -31,7 +34,8 @@ socket.on('updateCart', async (cartItems) => {
     if (item.isFavorite) {
       img.style.border = '2px solid red';
     }
-
+    
+    /* Evento para añadir o quitar un producto de los favoritos
     img.addEventListener('dblclick', function() {
       item.isFavorite = !item.isFavorite;
       if (item.isFavorite) {
@@ -42,6 +46,64 @@ socket.on('updateCart', async (cartItems) => {
         socket.emit('removeFromFavorites', cartItems.indexOf(item));
       }
       socket.emit('updateItem', item);
+    });*/
+
+    // Evento para eliminar un producto del carrito
+
+    img.addEventListener('touchstart', function(event) {
+      event.preventDefault(); // Prevent the default touch event
+
+      isLongPress = false;
+      touchCount++; // Increment the touch count
+
+      timer = setTimeout(() => {
+        isLongPress = true;
+        if (item.quantity == 1) {
+          socket.emit('removeItem', cartItems.indexOf(item));
+        } else {
+          item.quantity -= 1;
+          socket.emit('updateItem', item);
+        }
+        // Vibrar cuando se elimine un producto
+        if (navigator.vibrate) {
+          navigator.vibrate(200);
+        }
+      }, 2000); // Set timeout for 2 seconds
+    });
+
+    img.addEventListener('touchend', function(event) {
+      event.preventDefault(); // Prevent the default touch event
+
+      clearTimeout(timer); // Cancel the timer if touch ends before 2 seconds
+
+      if (!isLongPress) {
+        if (touchCount === 2) {
+          item.isFavorite = !item.isFavorite;
+          if (item.isFavorite) {
+            img.style.border = '2px solid red';
+            socket.emit('addToFavorites', item);
+          } else {
+            img.style.border = '';
+            socket.emit('removeFromFavorites', cartItems.indexOf(item));
+          }
+          socket.emit('updateItem', item);
+          touchCount = 0; // Reset the touch count after handling double tap
+        }
+      }
+    });
+
+    img.addEventListener('dblclick', function() {
+      if (!isLongPress) {
+        item.isFavorite = !item.isFavorite;
+        if (item.isFavorite) {
+          img.style.border = '2px solid red';
+          socket.emit('addToFavorites', item);
+        } else {
+          img.style.border = '';
+          socket.emit('removeFromFavorites', cartItems.indexOf(item));
+        }
+        socket.emit('updateItem', item);
+      }
     });
 
     const textDiv = document.createElement('div');
