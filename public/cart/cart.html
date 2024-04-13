@@ -9,6 +9,13 @@
 <body>
   <h1>Carrito de Compras</h1>
 
+  <select id="sortOptions">
+    <option value="default">Ordenar por...</option>
+    <option value="type">Tipo de artículo</option>
+    <option value="priceAsc">Precio: Menor a Mayor</option>
+    <option value="priceDesc">Precio: Mayor a Menor</option>
+  </select>
+
   <div id="cartItems"></div>
 
   <button id="clearCart" onclick="clearCart()">Limpiar carrito</button>

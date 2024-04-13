@@ -189,6 +189,12 @@ io.on('connection', (socket) => {
     }
   });
 
+  // Para ordenar los artículos del carrito
+  socket.on('sortedCart', (cartItems) => {
+    saveCartItems();
+    io.emit('updateCart', cartItems);
+  });
+
   socket.on('disconnect', () => {
     console.log('Un cliente se ha desconectado');
   });

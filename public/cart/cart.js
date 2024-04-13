@@ -17,6 +17,32 @@ socket.on('updateCart', async (cartItems) => {
   // Obtener los favoritos actuales
   const response = await fetch('/favorites');
   const favorites = await response.json();
+
+  // Define el controlador de eventos como una función para poder eliminarlo más tarde
+  function handleSortOptionsChange(e) {
+    const sortOption = e.target.value;
+    if (sortOption === 'type') {
+      // Ordenar por tipo de artículo
+      cartItems.sort((a, b) => a.type.localeCompare(b.type));
+    } else if (sortOption === 'priceAsc') {
+      // Ordenar por precio de menor a mayor
+      cartItems.sort((a, b) => a.price - b.price);
+    } else if (sortOption === 'priceDesc') {
+      // Ordenar por precio de mayor a menor
+      cartItems.sort((a, b) => b.price - a.price);
+    }
+    socket.emit('sortedCart', cartItems);
+  }
+
+  const sortOptions = document.getElementById('sortOptions');
+
+  // Asegúrate de que el controlador de eventos se agrega solo una vez
+  if (!sortOptions._hasChangeEvent) {
+    sortOptions.addEventListener('change', handleSortOptionsChange);
+    sortOptions._hasChangeEvent = true;
+  }
+
+  console.log("Los articulos: ", cartItems);
   
   cartItems.forEach(item => {
     const itemDiv = document.createElement('div');
@@ -140,7 +166,6 @@ socket.on('updateCart', async (cartItems) => {
 
   // Añadir el total al final de cartItemsDiv
   cartItemsDiv.appendChild(totalElement);
-
 });
 
 function clearCart() {
