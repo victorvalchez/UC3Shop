@@ -43,7 +43,7 @@ body {
   }
 
   #cartItems {
-    display: grid;
+    display: block;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
@@ -64,3 +64,20 @@ body {
     display: block;
     margin: 0;
   }
+
+  .cart-total {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center; /* Cambia a center para centrar el texto */
+    margin-top: 20px;
+    order: 1; /* Asegura que el total se muestre primero */
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column; /* Cambia a column para apilar los botones verticalmente */
+  justify-content: center;
+  margin-top: 20px;
+  align-items: center;
+  order: 2;
+}

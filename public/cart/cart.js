@@ -6,13 +6,21 @@ window.onload = function() {
   socket.emit('getCart');
 };
 
-socket.on('updateCart', (cartItems) => {
+socket.on('updateCart', async (cartItems) => {
   const cartItemsDiv = document.getElementById('cartItems');
   cartItemsDiv.innerHTML = '';
+  let total = 0; // Variable para almacenar el total
+
+  // Obtener los favoritos actuales
+  const response = await fetch('/favorites');
+  const favorites = await response.json();
+  
   cartItems.forEach(item => {
-    console.log(item);
     const itemDiv = document.createElement('div');
     itemDiv.className = 'item';
+
+    // Comprobar si el artículo está en los favoritos
+    item.isFavorite = favorites.some(favorite => favorite.product === item.product);
 
     const img = document.createElement('img');
     img.src = item.image || 'https://images.unsplash.com/photo-1616348436168-de43ad0db179?q=80&w=1981&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; // URL de la imagen por defecto
@@ -43,17 +51,34 @@ socket.on('updateCart', (cartItems) => {
     name.className = 'item-name';
 
     const price = document.createElement('p');
-    price.textContent = `Precio: ${item.price} €`;
+    price.textContent = `Precio: ${item.price}€`;
     price.className = 'item-price';
+
+    // Añadir la cantidad del producto
+    const quantity = document.createElement('p');
+    quantity.textContent = `Cantidad: ${item.quantity}`;
+    quantity.className = 'item-quantity';
+
+    total += item.price * item.quantity; // Suma el precio del producto al total
 
     textDiv.appendChild(name);
     textDiv.appendChild(price);
+    textDiv.appendChild(quantity); // Añadir la cantidad al div de texto
 
     itemDiv.appendChild(img);
     itemDiv.appendChild(textDiv);
 
     cartItemsDiv.appendChild(itemDiv);
   });
+
+  // Crear un elemento p para mostrar el total
+  const totalElement = document.createElement('p');
+  totalElement.textContent = `Total: ${total.toFixed(2)}€`; // Mostrar el total con 2 decimales
+  totalElement.className = 'cart-total';
+
+  // Añadir el total al final de cartItemsDiv
+  cartItemsDiv.appendChild(totalElement);
+
 });
 
 document.getElementById('addItemForm').addEventListener('submit', function(event) {
