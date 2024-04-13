@@ -8,6 +8,31 @@ window.onload = function() {
 socket.on('updateFavorites', (favoriteItems) => {
   const favoriteItemsDiv = document.getElementById('favoriteItems');
   favoriteItemsDiv.innerHTML = '';
+
+  // Define el controlador de eventos como una función para poder eliminarlo más tarde
+  function handleSortOptionsChange(e) {
+    const sortOption = e.target.value;
+    if (sortOption === 'type') {
+      // Ordenar por tipo de artículo
+      favoriteItems.sort((a, b) => a.type.localeCompare(b.type));
+    } else if (sortOption === 'priceAsc') {
+      // Ordenar por precio de menor a mayor
+      favoriteItems.sort((a, b) => a.price - b.price);
+    } else if (sortOption === 'priceDesc') {
+      // Ordenar por precio de mayor a menor
+      favoriteItems.sort((a, b) => b.price - a.price);
+    }
+    socket.emit('sortedFavs', favoriteItems);
+  }
+
+  const sortOptions = document.getElementById('sortOptions');
+
+  // Asegúrate de que el controlador de eventos se agrega solo una vez
+  if (!sortOptions._hasChangeEvent) {
+    sortOptions.addEventListener('change', handleSortOptionsChange);
+    sortOptions._hasChangeEvent = true;
+  }
+
   favoriteItems.forEach(item => {
     console.log(item);
     const itemDiv = document.createElement('div');

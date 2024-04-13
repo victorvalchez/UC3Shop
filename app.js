@@ -194,6 +194,10 @@ io.on('connection', (socket) => {
     io.emit('updateCart', cartItems);
   });
 
+  socket.on('sortedFavs', (favoriteItems) => {
+    io.emit('updateFavorites', favoriteItems);
+  });
+
   socket.on('disconnect', () => {
     console.log('Un cliente se ha desconectado');
   });
