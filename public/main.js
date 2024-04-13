@@ -2,8 +2,9 @@
 
 const video = document.getElementById('preview');
 const scanButton = document.getElementById('scanButton');
+let isCameraOpen = false;
 
-function tick() {
+function scanProduct() {
   if (video.readyState === video.HAVE_ENOUGH_DATA) {
     const canvasElement = document.createElement('canvas');
     const canvas = canvasElement.getContext('2d');
@@ -21,22 +22,36 @@ function tick() {
       const product = JSON.parse(code.data);
       socket.emit('addItem', product);
     } else {
-      requestAnimationFrame(tick);
+      requestAnimationFrame(scanProduct);
     }
   } else {
-    requestAnimationFrame(tick);
+    requestAnimationFrame(scanProduct);
   }
 }
 
-scanButton.addEventListener('click', function() {
+function startScanning() {
   navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
     .then(function(stream) {
       video.srcObject = stream;
       video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
       video.style.display = 'block'; // Mostrar el video
       video.play();
-      requestAnimationFrame(tick);
+      requestAnimationFrame(scanProduct);
     });
+}
+
+// Llamar a startScanning cuando se pulsa el botón de escanear
+document.getElementById('scanButton').addEventListener('click', startScanning);
+
+// Llamar a startScanning cuando se agita el dispositivo
+window.addEventListener('devicemotion', function(event) {
+  const acceleration = event.accelerationIncludingGravity;
+  const threshold = 15;
+
+  if (!isCameraOpen && (acceleration.x > threshold || acceleration.y > threshold || acceleration.z > threshold)) {
+    startScanning();
+    isCameraOpen = true;
+  }
 });
 
 const socket = io();
