@@ -175,6 +175,8 @@ recognition.onresult = function(event) {
 
   if (commands[result]) {
     window.location.href = commands[result];
+    // Limpiar el carrito después de finalizar la compra
+    clearCart();
   }
 };
 

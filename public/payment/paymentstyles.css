@@ -21,3 +21,7 @@ img {
   width: 85%; /* Hace que la imagen ocupe el 50% del ancho de la pantalla */
   margin-top: 10%; /* Empuja la imagen hacia abajo un 20% de la altura de la pantalla */
 }
+
+#return {
+  display: none;
+}
