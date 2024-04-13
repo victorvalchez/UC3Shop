@@ -118,7 +118,6 @@ io.on('connection', (socket) => {
     if (existingItem) {
       // Si el artículo ya está en el carrito, incrementa la cantidad
       existingItem.quantity += 1;
-      console.log(existingItem.quantity);
     } else {
       // Si el artículo no está en el carrito, añádelo con una cantidad de 1
       item.quantity = 1;
