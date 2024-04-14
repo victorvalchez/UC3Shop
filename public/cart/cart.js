@@ -107,6 +107,7 @@ socket.on('updateCart', async (cartItems) => {
         item.isFavorite = !item.isFavorite;
         if (item.isFavorite) {
           img.style.border = '2px solid red';
+          console.log(item.type);
           socket.emit('addToFavorites', item);
         } else {
           img.style.border = '';
@@ -124,6 +125,7 @@ socket.on('updateCart', async (cartItems) => {
 
     const type = document.createElement('p');
     type.textContent = `Tipo: ${item.type || 'No especificado'}`;
+    console.log("aqui esta el tipo: ", item.type);
     type.className = 'item-type';
 
     const price = document.createElement('p');

@@ -45,14 +45,14 @@ socket.on('updateFavorites', (favoriteItems) => {
 
     // Añade un borde rojo a los productos favoritos
     if (item.isFavorite) {
-      img.style.border = '2px solid red';
+      img.style.border = '2px solid white';
     }
 
     // Añade un evento de doble clic a la imagen
     img.addEventListener('dblclick', function() {
       item.isFavorite = !item.isFavorite;
       if (item.isFavorite) {
-        img.style.border = '2px solid red';
+        img.style.border = '2px solid white';
         socket.emit('addToFavorites', item); // Emitir el evento 'addToFavorites' cuando un artículo se marca como favorito
       } else {
         img.style.border = '';
@@ -66,13 +66,21 @@ socket.on('updateFavorites', (favoriteItems) => {
     const name = document.createElement('p');
     name.textContent = `Producto: ${item.product}`;
     name.className = 'item-name';
+    name.style.color = 'white';
+
+    const type = document.createElement('p');
+    type.textContent = `Tipo: ${item.type || 'No especificado'}`;
+    type.className = 'item-type';
+    type.style.color = 'white';
 
     const price = document.createElement('p');
     price.textContent = `Precio: ${item.price} €`;
     price.className = 'item-price';
+    price.style.color = 'white';
 
     textDiv.appendChild(name);
     textDiv.appendChild(price);
+    textDiv.appendChild(type);
 
     itemDiv.appendChild(img);
     itemDiv.appendChild(textDiv);
