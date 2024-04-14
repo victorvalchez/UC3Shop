@@ -1,29 +1,116 @@
 body {
+    margin: 0;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f8f8f8;
-    font-family: Arial, sans-serif;
+    font-family: 'Rubik', sans-serif;
+    background-image: url('./decoration/blurry-gradient-haikei.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow-x: hidden;
   }
   
   h1 {
-    color: #333;
+    color: #FFFFFF;
+    font-size: 3.5em;
   }
   
   button {
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    color: rgb(37, 37, 37);
+    font-size: 1;
     padding: 10px 20px;
     margin-top: 20px;
-    font-size: 1em;
     border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
+    border-radius: 20px;
+    background-color: #FFFFFF;
     cursor: pointer;
   }
   
   button:hover {
-    background-color: #0056b3;
+    background-color: rgb(240, 240, 240);
   }
+
+  .custom-shape-divider-top-1713083903 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1713083903 svg {
+    position: relative;
+    display: block;
+    width: calc(166% + 1.3px);
+    height: 204px;
+}
+
+.custom-shape-divider-top-1713083903 .shape-fill {
+    fill: #FFFFFF;
+}
+
+#searchInput {
+  font-family: 'Poppins', sans-serif;
+  width: 400px; /* Ajusta este valor según tus necesidades */
+  height: 25px; /* Ajusta este valor según tus necesidades */
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+#searchInput:focus {
+  outline: 2px solid rgba(128, 128, 128, 0.5); /* Ajusta este valor según tus necesidades */
+}
+
+#searchForm {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+#blob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-top: -30%;
+    text-align: center;
+  }
+
+  #searchInput {
+    width: 100%;
+    margin-top: 20%;
+  }
+
+  #blob {
+    width: 130%;
+    height: auto;
+  }
+
+  .custom-shape-divider-top-1713083903 svg {
+    width: 205%;
+    height: 125px;
+  }
+}

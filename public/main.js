@@ -54,6 +54,24 @@ window.addEventListener('devicemotion', function(event) {
   }
 });
 
+// Si giro el dispositivo hacia la derecha, redirigir a la página del carrito
+window.addEventListener('deviceorientation', function(event) {
+  const threshold = 45; // Adjust this value according to your needs
+
+  if (event.gamma > threshold) {
+    window.location.href = './cart.html';
+  }
+});
+
+// Si giro el dispositivo hacia la izquierda, redirigir a la página de favoritos
+window.addEventListener('deviceorientation', function(event) {
+  const threshold = -45; // Adjust this value according to your needs
+  
+  if (event.gamma < threshold) {
+    window.location.href = './favorites.html';
+  }
+});
+
 const socket = io();
 
 // Funcion para obtener resultados de busqueda
@@ -70,8 +88,12 @@ socket.on('searchResults', (products) => {
   products.forEach(product => {
     const productDiv = document.createElement('div');
     productDiv.textContent = product.product + ' - ' + product.price + '€';
+    productDiv.style.color = 'white';
+    productDiv.style.textShadow = '0px 0px 3px rgba(0, 0, 0, 0.1)'; // Add a slight shadow to the text
+    productDiv.style.fontSize = '1.15em';
     const addButton = document.createElement('button');
     addButton.textContent = 'Añadir al carrito';
+    addButton.style.marginLeft = '10px';
     addButton.addEventListener('click', function() {
       socket.emit('addItem', product);
     });
@@ -79,3 +101,4 @@ socket.on('searchResults', (products) => {
     resultsDiv.appendChild(productDiv);
   });
 });
+

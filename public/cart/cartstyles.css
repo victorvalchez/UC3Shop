@@ -5,8 +5,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f8f8f8;
+    background-color: transparent;
+    background-image: url('../styles/blurry-gradient-haikei.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: Arial, sans-serif;
+
   }
   
 h1 {
