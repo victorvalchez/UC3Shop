@@ -96,6 +96,11 @@ h1 {
   .item {
     display: flex;
     align-items: center;
+    background-color: white; /* Add a white background */
+    border-radius: 20px; /* Add rounded borders */
+    padding: 10px; /* Add some padding */
+    margin-bottom: 15px; /* Add some space between items */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
   }
   
   .item-image {
@@ -103,11 +108,13 @@ h1 {
     height: 100px;
     object-fit: cover;
     margin-right: 20px;
+    border-radius: 20px; /* Add rounded borders */
   }
   
   .item-name, .item-price, .item-type {
     display: block;
     margin: 0;
+    color: #222222;
   }
 
   @media (max-width: 768px) {

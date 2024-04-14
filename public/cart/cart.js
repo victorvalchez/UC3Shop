@@ -56,7 +56,7 @@ socket.on('updateCart', async (cartItems) => {
 
     // Añade un borde rojo a los productos favoritos
     if (item.isFavorite) {
-      img.style.border = '2px solid red';
+      img.style.border = '2px solid #FF2E82';
     }
     
     // Evento para eliminar un producto del carrito
@@ -90,7 +90,7 @@ socket.on('updateCart', async (cartItems) => {
         if (touchCount === 2) {
           item.isFavorite = !item.isFavorite;
           if (item.isFavorite) {
-            img.style.border = '2px solid red';
+            img.style.border = '2px solid #FF2E82';
             socket.emit('addToFavorites', item);
           } else {
             img.style.border = '';
@@ -106,7 +106,7 @@ socket.on('updateCart', async (cartItems) => {
       if (!isLongPress) {
         item.isFavorite = !item.isFavorite;
         if (item.isFavorite) {
-          img.style.border = '2px solid red';
+          img.style.border = '2px solid #FF2E82';
           console.log(item.type);
           socket.emit('addToFavorites', item);
         } else {
@@ -151,7 +151,10 @@ socket.on('updateCart', async (cartItems) => {
   });
 
   const totalPriceDiv = document.getElementById('totalPrice');
-  totalPriceDiv.textContent = `Precio total: ${total}€`;
+  totalPriceDiv.textContent = `Precio Total: ${total}€`;
+  totalPriceDiv.className = 'total-price';
+  totalPriceDiv.style.fontWeight = 'bold';
+  totalPriceDiv.style.color = 'white';
 
 });
 
