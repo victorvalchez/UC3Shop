@@ -1,3 +1,9 @@
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 body {
   margin: 0;
   height: 100vh;
@@ -80,6 +86,7 @@ h1 {
   color: #222222;
   margin-top: -1%;
   margin-bottom: 2%;
+  background-color: #FFFFFF;
 }
 
 #sortOptions:focus {
@@ -89,8 +96,10 @@ h1 {
 
   #favoritesItems {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 20px;
+    height: 400px; /* Set a fixed height */
+    overflow-y: auto; /* Enable vertical scrolling */
   }
   
   .item {
@@ -139,5 +148,17 @@ h1 {
     #sortOptions {
       width: 80%;
       margin-bottom: 10%;
+    }
+
+    #mainContainer {
+      margin-top: 20%;
+    }
+
+    #favoriteItems {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      height: 350px; /* Set a fixed height */
+      overflow-y: auto; /* Enable vertical scrolling */
     }
   }

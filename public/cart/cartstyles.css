@@ -1,3 +1,8 @@
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 body {
   margin: 0;
   height: 100vh;
@@ -14,6 +19,7 @@ body {
 }
   
   h1 {
+    margin-top: 20%;
     color: #FFFFFF;
     font-size: 3.5em;
   }
@@ -70,10 +76,11 @@ button {
 }
 
 #cartItems {
-  display: block;
-  grid-template-columns: repeat(2, 1fr);
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 20px;
-  overflow: auto;
+  height: 400px; /* Set a fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .item {
@@ -132,6 +139,7 @@ button {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   color: #222222;
   margin-top: -1%;
+  background-color: #FFFFFF;
 
 }
 
@@ -162,5 +170,18 @@ button {
     width: 85%;
     height: 5%;
     margin-bottom: 10%;
+  }
+
+  #cartItems {
+    display: grid;
+    grid-template-columns: 1fr; /* Display items in one column */
+    gap: 20px;
+    height: 300px; /* Set a fixed height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 20px; /* Add a top margin */
+  }
+
+  #mainContainer {
+    margin-top: 20%;
   }
 }
