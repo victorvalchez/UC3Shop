@@ -190,8 +190,8 @@ recognition.onresult = function(event) {
 
   if (commands[result]) {
     // Comprobar si hay artículos en el carrito
-    console.log(cartItems.length);
-    if (cartItems.length === undefined) {
+    console.log((Array.from(cartItems.children).some(child => child.tagName === 'DIV')));
+    if (Array.from(cartItems.children).some(child => child.tagName === 'DIV') === false) {
       alert('No hay artículos en el carrito.');
     } else {
       window.location.href = commands[result];
@@ -221,3 +221,22 @@ recognition.onnomatch = function(event) {
 recognition.onerror = function(event) {
   console.log(`Error occurred in recognition: ${event.error}`);
 };
+
+// Si giro el dispositivo hacia la izquierda, redirigir a la página de favoritos
+window.addEventListener('deviceorientation', function(event) {
+  const threshold = -45; // Adjust this value according to your needs
+  
+  if (event.gamma < threshold) {
+    window.location.href = './index.html';
+  }
+});
+
+// Limpiar el carrito cuando se agita el dispositivo
+window.addEventListener('devicemotion', function(event) {
+  const acceleration = event.accelerationIncludingGravity;
+  const threshold = 15;
+
+  if (acceleration.x > threshold || acceleration.y > threshold || acceleration.z > threshold) {
+    clearCart();
+  }
+});

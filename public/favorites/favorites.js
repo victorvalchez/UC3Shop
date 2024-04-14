@@ -85,3 +85,12 @@ socket.on('updateFavorites', (favoriteItems) => {
     favoriteItemsDiv.appendChild(itemDiv);
   });
 });
+
+// Si giro el dispositivo hacia la derecha, redirigir a la página del carrito
+window.addEventListener('deviceorientation', function(event) {
+  const threshold = 45; // Adjust this value according to your needs
+
+  if (event.gamma > threshold) {
+    window.location.href = './index.html';
+  }
+});

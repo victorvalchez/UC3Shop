@@ -89,7 +89,7 @@ button {
   background-color: white; /* Add a white background */
   border-radius: 20px; /* Add rounded borders */
   padding: 10px; /* Add some padding */
-  margin-bottom: 15px; /* Add some space between items */
+  
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
 
@@ -138,7 +138,7 @@ button {
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   color: #222222;
-  margin-top: -1%;
+  margin-top: -5%;
   background-color: #FFFFFF;
 
 }
@@ -168,8 +168,8 @@ button {
 
   #sortOptions {
     width: 85%;
-    height: 5%;
-    margin-bottom: 10%;
+    height: 10%;
+    margin-bottom: 0%;
   }
 
   #cartItems {
@@ -178,7 +178,6 @@ button {
     gap: 20px;
     height: 300px; /* Set a fixed height */
     overflow-y: auto; /* Enable vertical scrolling */
-    margin-top: 20px; /* Add a top margin */
   }
 
   #mainContainer {
