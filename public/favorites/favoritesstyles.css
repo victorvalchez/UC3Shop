@@ -98,7 +98,7 @@ h1 {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
-    height: 500px; /* Set a fixed height */
+    max-height: 500px; /* Set a fixed height */
     overflow-y: auto; /* Enable vertical scrolling */
   }
   

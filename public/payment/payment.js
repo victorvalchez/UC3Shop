@@ -6,7 +6,7 @@ function handleOrientation(event) {
   // Detectamos el movimiento hacia delante
   if (beta < -25) {
     // El dispositivo está inclinado hacia adelante, puedes realizar acciones aquí
-    alert("Gracias por su pago. Su pedido está en camino.");
+    alert("Pago realizado de forma exitosa. Gracias por su compra.");
     document.getElementById('message').textContent = "Gracias por su confianza, disfrute de su compra";
     document.querySelector('img').src = "https://i.gifer.com/7efs.gif";
     document.getElementById('return').style.display = "block"; // Muestra el párrafo
