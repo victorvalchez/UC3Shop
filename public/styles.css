@@ -22,13 +22,27 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: white;
     color: rgb(37, 37, 37);
-    font-size: 1;
+    font-size: 1em;
     padding: 10px 20px;
-    margin-top: 20px;
     border: none;
-    border-radius: 20px;
+    border-radius: 40px;
     background-color: #FFFFFF;
     cursor: pointer;
+  }
+
+  #text2 {
+    font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
+    font-size: 1.2em;
+    margin-top: 40px;
+    margin-bottom: 0.5%;
+  }
+
+  #text1 {
+    font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
+    font-size: 1.2em;
+    margin-bottom: 0.5%;
   }
   
   button:hover {
@@ -55,7 +69,7 @@ body {
     fill: #FFFFFF;
 }
 
-#searchInput {
+#employeeCode {
   font-family: 'Poppins', sans-serif;
   width: 400px; /* Ajusta este valor según tus necesidades */
   height: 25px; /* Ajusta este valor según tus necesidades */
@@ -66,11 +80,11 @@ body {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-#searchInput:focus {
+#employeeCode:focus {
   outline: 2px solid rgba(128, 128, 128, 0.5); /* Ajusta este valor según tus necesidades */
 }
 
-#searchForm {
+#employeeForm {
   font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
@@ -99,7 +113,12 @@ body {
     text-align: center;
   }
 
-  #searchInput {
+  #text1 {
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  #employeeCode {
     width: 100%;
     margin-top: 0%;
   }

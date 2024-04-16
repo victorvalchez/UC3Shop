@@ -1,5 +1,18 @@
 // Codigo que implementa la funcionalidad de escanear un código QR y enviarlo al servidor
 
+document.getElementById('employeeForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from being submitted normally
+  const employeeCode = document.getElementById('employeeCode').value;
+
+  // Replace 'correctCode' with the correct employee code
+  if (employeeCode === '1234') {
+    // Replace 'employeeOptions.html' with the path to the employee options page
+    window.location.href = 'employeeOptions.html';
+  } else {
+    alert('Código de empleado incorrecto');
+  }
+});
+
 const video = document.getElementById('preview');
 const scanButton = document.getElementById('scanButton');
 let isCameraOpen = false;

@@ -78,8 +78,8 @@ button {
 #cartItems {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
-  max-height: 400px; /* Set a fixed height */
+  gap: 20px;  
+  max-height: 600px;
   overflow-y: auto; /* Enable vertical scrolling */
 }
 
@@ -152,6 +152,7 @@ button {
     flex-direction: column;
     justify-content: center;
     height: 100vh;
+    overflow: hidden;
   }
 
   h1 {
@@ -166,7 +167,7 @@ button {
   }
 
   #sortOptions {
-    width: 85%;
+    width: 95%;
     height: 10%;
     margin-bottom: 0%;
   }
@@ -175,7 +176,7 @@ button {
     display: grid;
     grid-template-columns: 1fr; /* Display items in one column */
     gap: 20px;
-    height: 300px; /* Set a fixed height */
+    max-height: 500px;
     overflow-y: auto; /* Enable vertical scrolling */
   }
 
