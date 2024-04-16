@@ -12,6 +12,7 @@ app.use(express.static('public')); // Para servir el index.html
 app.use(express.static('public/cart')); // Para servir el cart.html
 app.use(express.static('public/favorites')); // Para servir el favorites.html
 app.use(express.static('public/payment')); // Para servir el payment.html
+app.use(express.static('public/cliente')); // Para servir el checkout.html
 
 // Para coger todos los productos disponibles
 let products = require('./products.json');
@@ -33,6 +34,11 @@ app.get('/favorites.html', function(req, res) {
 // Para la pagina de pago
 app.get('/payment.html', function(req, res) {
   res.sendFile(__dirname + '/public/payment/payment.html');
+});
+
+// Para la pagina del cliente
+app.get('/client.html', function(req, res) {
+  res.sendFile(__dirname + '/public/cliente/client.html');
 });
 
 app.get('/favorites', (req, res) => {

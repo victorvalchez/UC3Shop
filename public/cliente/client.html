@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UC3Shop</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./client.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -31,11 +31,9 @@
     <video id="preview" style="display: none;"></video>
     <button id="scanButton">Escanear Etiqueta</button>
 
-    <button onclick="window.location.href='./client.html'">Cliente</button>
+    <button onclick="window.location.href='../favorites.html'">Favoritos</button>
 
-    <button onclick="window.location.href='./favorites.html'">Favoritos</button>
-
-    <button onclick="window.location.href='./cart.html'">Carrito</button>
+    <button onclick="window.location.href='../cart.html'">Carrito</button>
 
     <svg id="blob" viewBox="0 0 900 600" width="900" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
         <g transform="translate(417.41765906404703 303.48509728339496)">
@@ -46,6 +44,6 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdn.rawgit.com/cozmo/jsQR/master/dist/jsQR.js"></script>
-    <script src="main.js"></script>
+    <script src="client.js"></script>
 </body>
 </html>
