@@ -54,3 +54,11 @@ socket.on('updateCheckout', async (cartItems) => {
   totalPriceDiv.style.color = 'white';
 
 });
+
+function clearCart() {
+  socket.emit('clearCart');
+}
+
+document.getElementById('checkoutButton').addEventListener('click', function() {
+  clearCart();
+});
