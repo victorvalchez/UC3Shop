@@ -13,6 +13,7 @@ app.use(express.static('public/cart')); // Para servir el cart.html
 app.use(express.static('public/favorites')); // Para servir el favorites.html
 app.use(express.static('public/payment')); // Para servir el payment.html
 app.use(express.static('public/cliente')); // Para servir el checkout.html
+app.use(express.static('public/empleados')); // Para servir el empleados.html
 
 // Para coger todos los productos disponibles
 let products = require('./products.json');
@@ -39,6 +40,11 @@ app.get('/payment.html', function(req, res) {
 // Para la pagina del cliente
 app.get('/client.html', function(req, res) {
   res.sendFile(__dirname + '/public/cliente/client.html');
+});
+
+// Para la pagina de los empleados
+app.get('/employee.html', function(req, res) {
+  res.sendFile(__dirname + '/public/empleados/employee.html');
 });
 
 app.get('/favorites', (req, res) => {
@@ -115,6 +121,11 @@ io.on('connection', (socket) => {
   // Emitir el estado actual del carrito cuando un cliente se conecta
   socket.on('getCart', () => {
     io.emit('updateCart', cartItems);
+  });
+
+  // Para avisar del final de la compra
+  socket.on('notifyCheckout', () => {
+    io.emit('updateCheckout', cartItems);
   });
 
   // Manejar la solicitud de mostrar los artículos favoritos

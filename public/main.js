@@ -7,7 +7,7 @@ document.getElementById('employeeForm').addEventListener('submit', function(even
   // Replace 'correctCode' with the correct employee code
   if (employeeCode === '1234') {
     // Replace 'employeeOptions.html' with the path to the employee options page
-    window.location.href = 'employeeOptions.html';
+    window.location.href = 'employee.html';
   } else {
     alert('Código de empleado incorrecto');
   }

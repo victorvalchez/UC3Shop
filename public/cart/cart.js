@@ -196,7 +196,7 @@ recognition.onresult = function(event) {
     } else {
       window.location.href = commands[result];
       // Limpiar el carrito después de finalizar la compra
-      clearCart();
+      socket.emit('notifyCheckout');
     }
   }
 };

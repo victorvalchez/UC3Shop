@@ -20,6 +20,6 @@ document.addEventListener('touchstart', function(event) {
   event.preventDefault();
   touches++;
   if (touches === 3) {
-    window.location.href = '../index.html';
+    window.location.href = '../client.html';
   }
 });

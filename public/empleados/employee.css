@@ -1,0 +1,188 @@
+#mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+    background-image: url('./decoration/blurry-gradient-haikei.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow-x: hidden;
+  }
+    
+    h1 {
+      margin-top: 20%;
+      margin-bottom: 0%;
+      color: #FFFFFF;
+      font-size: 3.5em;
+    }
+  
+  #cartItems {
+    margin: 20px 0;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label, input {
+    margin: 5px 0;
+  }
+  
+  button {
+      font-family: 'Poppins', sans-serif;
+      background-color: white;
+      color: rgb(37, 37, 37);
+      font-size: 1;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 20px;
+      background-color: #FFFFFF;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: rgb(240, 240, 240);
+    }
+  
+  .custom-shape-divider-top-1713083903 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+  
+  .custom-shape-divider-top-1713083903 svg {
+    position: relative;
+    display: block;
+    width: calc(166% + 1.3px);
+    height: 204px;
+  }
+  
+  .custom-shape-divider-top-1713083903 .shape-fill {
+    fill: #FFFFFF;
+  }
+  
+  #cartItems {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;  
+    max-height: 600px;
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  .item {
+    display: flex;
+    align-items: center;
+    background-color: white; /* Add a white background */
+    border-radius: 20px; /* Add rounded borders */
+    padding: 10px; /* Add some padding */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+  }
+  
+  .item-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 20px; /* Add rounded borders */
+  }
+  
+  .item-name, .item-price, .item-type, .item-quantity {
+    display: block;
+    margin: 0;
+    color: #1d1d1d;
+  }
+  
+  .cart-total {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center; /* Cambia a center para centrar el texto */
+    margin-top: 20px;
+    order: 1; /* Asegura que el total se muestre primero */
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: column; /* Cambia a column para apilar los botones verticalmente */
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    order: 2;
+  }
+  
+  #totalPrice {
+    font-size: 20px; /* Ajusta el tamaño del texto */
+    font-weight: bold; /* Hace el texto en negrita */
+  }
+  
+  #sortOptions {
+    font-family: 'Poppins', sans-serif;
+    width: 400px; 
+    height: 25px;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    color: #222222;
+    margin-top: -5%;
+    background-color: #FFFFFF;
+  
+  }
+  
+  #sortOptions:focus {
+    outline: 2px solid rgba(128, 128, 128, 0.5); /* Ajusta este valor según tus necesidades */
+  }
+  
+  @media (max-width: 768px) {
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+  
+    h1 {
+      font-size: 2.4em;
+      margin-top: -30%;
+      text-align: center;
+    }
+  
+    .custom-shape-divider-top-1713083903 svg {
+      width: 205%;
+      height: 125px;
+    }
+  
+    #sortOptions {
+      width: 95%;
+      height: 10%;
+      margin-bottom: 0%;
+    }
+  
+    #cartItems {
+      display: grid;
+      grid-template-columns: 1fr; /* Display items in one column */
+      gap: 20px;
+      max-height: 500px;
+      overflow-y: auto; /* Enable vertical scrolling */
+    }
+  
+    #mainContainer {
+      margin-top: 20%;
+    }
+  }
+  
