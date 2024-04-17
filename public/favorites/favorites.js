@@ -91,7 +91,7 @@ window.addEventListener('deviceorientation', function(event) {
   const threshold = 45; // Adjust this value according to your needs
 
   if (event.gamma > threshold) {
-    window.location.href = './index.html';
+    window.location.href = './client.html';
   }
 });
 
