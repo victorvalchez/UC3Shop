@@ -114,4 +114,3 @@ socket.on('searchResults', (products) => {
     resultsDiv.appendChild(productDiv);
   });
 });
-

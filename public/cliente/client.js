@@ -1,3 +1,5 @@
+const socket = io();
+
 // Codigo que implementa la funcionalidad de escanear un código QR y enviarlo al servidor
 
 const video = document.getElementById('preview');
@@ -72,8 +74,6 @@ window.addEventListener('deviceorientation', function(event) {
   }
 });
 
-const socket = io();
-
 // Funcion para obtener resultados de busqueda
 document.getElementById('searchForm').addEventListener('submit', function(event) {
   event.preventDefault();
@@ -102,3 +102,21 @@ socket.on('searchResults', (products) => {
   });
 });
 
+// Para llamar al empleado
+let timer;
+
+window.addEventListener('touchstart', function(event) {
+  timer = setTimeout(function() {
+    alert('Se ha solicitado ayuda a un empleado.')
+    socket.emit('helpRequest');
+  }, 3000); // 3000 milliseconds = 3 seconds
+});
+
+window.addEventListener('touchend', function() {
+  clearTimeout(timer);
+});
+
+// Alerta del empleado
+socket.on('helpAccepted', function() {
+  alert('El empleado está en camino');
+});

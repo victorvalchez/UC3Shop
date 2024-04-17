@@ -10,7 +10,7 @@ socket.on('updateCart', async (cartItems) => {
   const cartItemsDiv = document.getElementById('cartItems');
   cartItemsDiv.innerHTML = '';
   let total = 0; // Variable para almacenar el total
-  let timer; // Variable para almacenar el temporizador
+  let timerFav; // Variable para almacenar el temporizador
   let isLongPress = false; // Variable para comprobar si se ha mantenido pulsado
   let touchCount = 0; // Variable para contar los toques
 
@@ -66,7 +66,7 @@ socket.on('updateCart', async (cartItems) => {
       isLongPress = false;
       touchCount++; // Increment the touch count
 
-      timer = setTimeout(() => {
+      timerFav = setTimeout(() => {
         isLongPress = true;
         if (item.quantity == 1) {
           socket.emit('removeItem', cartItems.indexOf(item));
@@ -84,7 +84,7 @@ socket.on('updateCart', async (cartItems) => {
     img.addEventListener('touchend', function(event) {
       event.preventDefault(); // Prevent the default touch event
 
-      clearTimeout(timer); // Cancel the timer if touch ends before 2 seconds
+      clearTimeout(timerFav); // Cancel the timerFav if touch ends before 2 seconds
 
       if (!isLongPress) {
         if (touchCount === 2) {
@@ -239,4 +239,23 @@ window.addEventListener('devicemotion', function(event) {
   if (acceleration.x > threshold || acceleration.y > threshold || acceleration.z > threshold) {
     clearCart();
   }
+});
+
+// Para llamar al empleado
+let timer;
+
+window.addEventListener('touchstart', function(event) {
+  timer = setTimeout(function() {
+    alert('Se ha solicitado ayuda a un empleado.')
+    socket.emit('helpRequest');
+  }, 3000); // 3000 milliseconds = 3 seconds
+});
+
+window.addEventListener('touchend', function() {
+  clearTimeout(timer);
+});
+
+// Alerta del empleado
+socket.on('helpAccepted', function() {
+  alert('¡El empleado está en camino!');
 });

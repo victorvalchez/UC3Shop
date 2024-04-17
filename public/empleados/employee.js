@@ -62,3 +62,10 @@ function clearCart() {
 document.getElementById('checkoutButton').addEventListener('click', function() {
   clearCart();
 });
+
+// Manejar la ayuda al cliente
+socket.on('helpAlert', function() {
+  if (confirm('Un cliente necesita tu ayuda')) {
+    socket.emit('helpAccepted');
+  }
+});

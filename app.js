@@ -123,6 +123,16 @@ io.on('connection', (socket) => {
     io.emit('updateCart', cartItems);
   });
 
+  // Para llamar al empleadoç
+  socket.on('helpRequest', function() {
+    io.emit('helpAlert');
+  });
+
+  // Para aceptar la solicitud de ayuda
+  socket.on('helpAccepted', function() {
+    io.emit('helpAccepted');
+  });
+
   // Para avisar del final de la compra
   socket.on('notifyCheckout', () => {
     io.emit('updateCheckout', cartItems);
