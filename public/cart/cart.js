@@ -231,7 +231,7 @@ window.addEventListener('deviceorientation', function(event) {
 // Limpiar el carrito cuando se agita el dispositivo
 window.addEventListener('devicemotion', function(event) {
   const acceleration = event.accelerationIncludingGravity;
-  const threshold = 15;
+  const threshold = 30;
 
   if (acceleration.x > threshold || acceleration.y > threshold || acceleration.z > threshold) {
     clearCart();
