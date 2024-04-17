@@ -97,10 +97,21 @@ window.addEventListener('deviceorientation', function(event) {
 
 // Para llamar al empleado
 let touchCountCall = 0;
+let touchTimer;
 
 window.addEventListener('touchstart', function(event) {
+  if (touchCountCall === 0) {
+    // Start the timer at the first touch
+    touchTimer = setTimeout(() => {
+      touchCountCall = 0;
+    }, 1000);
+  }
   touchCountCall++;
+});
+
+window.addEventListener('touchend', function(event) {
   if (touchCountCall === 3) {
+    clearTimeout(touchTimer); // clear the timer
     alert('Se ha solicitado ayuda a un empleado.');
     socket.emit('helpRequest');
     touchCountCall = 0; // reset the touch count
