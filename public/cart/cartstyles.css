@@ -18,11 +18,11 @@ body {
   overflow-x: hidden;
 }
   
-  h1 {
-    margin-top: 20%;
-    color: #FFFFFF;
-    font-size: 3.5em;
-  }
+h1 {
+  margin-top: 20%;
+  color: #FFFFFF;
+  font-size: 3.5em;
+}
 
 #cartItems {
   margin: 20px 0;

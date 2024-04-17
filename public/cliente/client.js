@@ -3,6 +3,7 @@ const socket = io();
 // Codigo que implementa la funcionalidad de escanear un código QR y enviarlo al servidor
 
 const video = document.getElementById('preview');
+video.setAttribute('id', 'videoElement');
 const scanButton = document.getElementById('scanButton');
 let isCameraOpen = false;
 

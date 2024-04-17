@@ -99,6 +99,7 @@ window.addEventListener('deviceorientation', function(event) {
 let timer;
 
 window.addEventListener('touchstart', function(event) {
+  event.preventDefault();
   timer = setTimeout(function() {
     alert('Se ha solicitado ayuda a un empleado.')
     socket.emit('helpRequest');

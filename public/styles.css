@@ -11,6 +11,7 @@ body {
     background-size: cover;
     position: relative;
     overflow-x: hidden;
+    overflow: hidden;
   }
   
   h1 {
@@ -91,12 +92,14 @@ body {
 }
 
 #blob {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
   opacity: 0.5;
+  max-width: 100%; /* Add this line */
+  max-height: 100%; /* Add this line */
 }
 
 @media (max-width: 768px) {
@@ -121,11 +124,6 @@ body {
   #employeeCode {
     width: 100%;
     margin-top: 0%;
-  }
-
-  #blob {
-    width: 130%;
-    height: auto;
   }
 
   .custom-shape-divider-top-1713083903 svg {

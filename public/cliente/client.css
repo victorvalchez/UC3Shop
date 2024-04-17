@@ -1,17 +1,28 @@
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Rubik', sans-serif;
-    background-image: url('../decoration/blurry-gradient-haikei.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    overflow-x: hidden;
-  }
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Rubik', sans-serif;
+  background-image: url('../decoration/blurry-gradient-haikei.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
 
   p {
     color: #FFFFFF;
@@ -84,12 +95,27 @@ body {
 }
 
 #blob {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
   opacity: 0.5;
+  max-width: 100%; /* Add this line */
+  max-height: 100%; /* Add this line */
+}
+
+#videoElement {
+  position: fixed; /* Posiciona el video en el centro de la pantalla */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Asegura que el video esté encima de todo */
+  width: 300px; /* Ajusta el ancho del video */
+  height: 300px; /* Ajusta la altura del video */
+  border: 2px solid white; /* Añade un borde blanco alrededor del video */
+  border-radius: 0; /* Hace que el video tenga forma cuadrada */
+  object-fit: fill; /* Hace que el video ocupe todo el recuadro */
 }
 
 @media (max-width: 768px) {
@@ -110,11 +136,6 @@ body {
   #searchInput {
     width: 100%;
     margin-top: 0%;
-  }
-
-  #blob {
-    width: 130%;
-    height: auto;
   }
 
   .custom-shape-divider-top-1713083903 svg {
