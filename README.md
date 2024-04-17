@@ -28,42 +28,61 @@ Dirigirse a [`http://localhost:3000`](http://localhost:3000) y conectar nuestro 
 ## FAQ
 
 ### Página Principal
-1. #### ¿Desde la página principal cómo accedo al carrito?
+1. #### ¿Desde la página principal, cómo uso la app?
+      1. Si eres empleado, introduce tu código de acceso
+      2. Si eres cliente, pulsa el botón
+
+### Página de Cliente
+1. #### ¿Desde la página del cliente, cómo accedo al carrito?
       Gira tu móvil a la derecha sobre el eje vertical
 
-2. #### ¿Desde la página principal cómo accedo a favoritos?
+2. #### ¿Desde la página del cliente, cómo accedo a favoritos?
      Gira tu móvil a la izquierda sobre el eje vertical
 
-3. #### ¿Desde la página principal cómo escaneo un artículo?
+3. #### ¿Desde la página del cliente, cómo escaneo un artículo?
       Agita tu móvil y se abrirá la cámara
+
+4. #### ¿Desde la página del cliente, cómo salgo del escáner?
+      Toca la pantalla fuera del recuadro del vídeo
+
+5. #### ¿Desde la página del cliente, cómo llamo a un empleado?
+      Toca la pantalla *tres* veces seguidas y se notificará al empleado
 
 
 ### Página de Favoritos
-1. #### ¿Desde la página de favoritos cómo quito un artículo de favoritos?
+1. #### ¿Desde la página de favoritos, cómo quito un artículo de favoritos?
      Da doble tap sobre la imagen del artículo (estará rodeada por un recuadro rosado)
 
-2. #### ¿Desde la página de favoritos cómo vuelvo a la página principal?
+2. #### ¿Desde la página de favoritos, cómo vuelvo a la página principal?
       Gira tu móvil a la derecha sobre el eje vertical
 
 
 ### Página del Carrito
-1. #### ¿Desde la página del carrito cómo añado/quito un artículo de favoritos?
+1. #### ¿Desde la página del carrito, cómo añado/quito un artículo de favoritos?
       Da doble tap sobre la imagen del artículo (se rodeará por un recuadro rosado si está en favoritos)
 
-2. #### ¿Desde la página del carrito cómo quito/reduzco la cantidad de un artículo de mi carrito?
-      Mantén pulsada la imagen durante dos segundos y el dispositivo vibrará para confirmar. Verás la cantidad actualizada o la desaparición del artículo
+2. #### ¿Desde la página del carrito, cómo quito/reduzco la cantidad de un artículo de mi carrito?
+      Mantén pulsada la imagen durante *un* segundo y el dispositivo vibrará para confirmar. Verás la cantidad actualizada o la desaparición del artículo
 
-3. #### ¿Desde la página del carrito cómo vuelvo a la página principal?
+3. #### ¿Desde la página del carrito, cómo vuelvo a la página principal?
       Gira tu móvil a la izquierda sobre el eje vertical
 
+4. #### ¿Desde la página del carrito, cómo accedo al proceso de pago?
+      Dí en alto la frase *"Finalizar compra."* y te llevará al proceso de pago.
+
+### Página de Empleado
+1. #### ¿Desde la página de empleado, cómo accedo a los productos del cliente?
+      Cuando el cliente pase al proceso de pago, verás sus artículos en tu pantalla actualizados 
+
+2. #### #### ¿Desde la página de empleado, cómo finalizo la compra?
+      Pulsa el botón de *"Cerrar Caja"* y se limpiará el carrito del cliente automáticmanete
 
 ### Página de Pago
-1. #### ¿Desde la página de pago cómo realizo la transacción?
+1. #### ¿Desde la página de pago, cómo realizo la transacción?
       Baja tu móvil como si fueses a pagar por contactless. El dispositivo te notificará si ha sido exitoso.
 
-1. #### ¿Desde la página de pago cómo vuelvo a la página principal?
+2. #### ¿Desde la página de pago, cómo vuelvo a la página principal?
       Toca la pantalla tres veces seguidas
-
 
 
 ## Authors
