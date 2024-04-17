@@ -7,6 +7,21 @@ video.setAttribute('id', 'videoElement');
 const scanButton = document.getElementById('scanButton');
 let isCameraOpen = false;
 
+const body = document.body;
+
+body.addEventListener('click', function(event) {
+  // Verificar si el clic fue dentro del video
+  if (event.target !== video) {
+    // Si el clic fue fuera del video, cerrar el video
+    video.pause();
+    if (video.srcObject) {
+      video.srcObject.getTracks().forEach(track => track.stop());
+    }
+    video.style.display = 'none'; // Ocultar el video
+    isCameraOpen = false; // Indicar que la cámara ya no está abierta
+  }
+});
+
 function scanProduct() {
   if (video.readyState === video.HAVE_ENOUGH_DATA) {
     const canvasElement = document.createElement('canvas');
