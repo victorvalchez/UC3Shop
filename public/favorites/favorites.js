@@ -96,21 +96,18 @@ window.addEventListener('deviceorientation', function(event) {
 });
 
 // Para llamar al empleado
-let timer;
+let touchCountCall = 0;
 
 window.addEventListener('touchstart', function(event) {
-  event.preventDefault();
-  timer = setTimeout(function() {
-    alert('Se ha solicitado ayuda a un empleado.')
+  touchCountCall++;
+  if (touchCountCall === 3) {
+    alert('Se ha solicitado ayuda a un empleado.');
     socket.emit('helpRequest');
-  }, 3000); // 3000 milliseconds = 3 seconds
-});
-
-window.addEventListener('touchend', function() {
-  clearTimeout(timer);
+    touchCountCall = 0; // reset the touch count
+  }
 });
 
 // Alerta del empleado
 socket.on('helpAccepted', function() {
-  alert('El empleado está en camino');
+  alert('¡El empleado está en camino!');
 });

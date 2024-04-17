@@ -211,6 +211,7 @@ io.on('connection', (socket) => {
     if (index !== -1) {
       cartItems[index] = updatedItem;
       // io.emit('updateCart', cartItems);
+      io.emit('updateCart', cartItems);
       saveCartItems();
     }
   });

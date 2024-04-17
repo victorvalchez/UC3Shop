@@ -61,8 +61,7 @@ socket.on('updateCart', async (cartItems) => {
     
     // Evento para eliminar un producto del carrito
     img.addEventListener('touchstart', function(event) {
-      event.preventDefault(); // Prevent the default touch event
-
+      event.preventDefault();
       isLongPress = false;
       touchCount++; // Increment the touch count
 
@@ -78,12 +77,10 @@ socket.on('updateCart', async (cartItems) => {
         if (navigator.vibrate) {
           navigator.vibrate(200);
         }
-      }, 2000); // Set timeout for 2 seconds
+      }, 1000); // Set timeout for 2 seconds
     });
 
     img.addEventListener('touchend', function(event) {
-      event.preventDefault(); // Prevent the default touch event
-
       clearTimeout(timerFav); // Cancel the timerFav if touch ends before 2 seconds
 
       if (!isLongPress) {
@@ -242,17 +239,15 @@ window.addEventListener('devicemotion', function(event) {
 });
 
 // Para llamar al empleado
-let timer;
+let touchCountCall = 0;
 
 window.addEventListener('touchstart', function(event) {
-  timer = setTimeout(function() {
-    alert('Se ha solicitado ayuda a un empleado.')
+  touchCountCall++;
+  if (touchCountCall === 3) {
+    alert('Se ha solicitado ayuda a un empleado.');
     socket.emit('helpRequest');
-  }, 3000); // 3000 milliseconds = 3 seconds
-});
-
-window.addEventListener('touchend', function() {
-  clearTimeout(timer);
+    touchCountCall = 0; // reset the touch count
+  }
 });
 
 // Alerta del empleado
