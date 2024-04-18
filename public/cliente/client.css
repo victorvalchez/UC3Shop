@@ -83,10 +83,21 @@ body {
   outline: 2px solid rgba(128, 128, 128, 0.5); /* Ajusta este valor según tus necesidades */
 }
 
+#searchResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 250px; /* Ajusta este valor según tus necesidades */
+  overflow-y: auto;
+  margin: 0 auto;
+}
+
 #searchForm {
   font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
+  align-items: center;
+  max-height: 250px;
 }
 
 #blob {
