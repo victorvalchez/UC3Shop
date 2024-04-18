@@ -69,9 +69,11 @@ socket.on('updateCart', async (cartItems) => {
         isLongPress = true;
         if (item.quantity == 1) {
           socket.emit('removeItem', cartItems.indexOf(item));
+          navigator.vibrate(200);
         } else {
           item.quantity -= 1;
           socket.emit('updateItem', item);
+          navigator.vibrate(200);
         }
         // Vibrar cuando se elimine un producto
         if (navigator.vibrate) {
