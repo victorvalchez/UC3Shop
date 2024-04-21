@@ -24,12 +24,17 @@ nodemon app
 Dirigirse a [`http://localhost:3000`](http://localhost:3000) y conectar nuestro dispositivo móvil habiendo activado previamente la depuración USB
 
 
+## Funciones extra
+1. Posibilidad de llamar al empleado en cualquier momento mediante la triple pulsación de la pantalla. El empleado recibirá un aviso en su web de que el cliente necesita ayuda.
+2. Simulación final de pago. Se intentó reconocer tarjetas de crédito mediante NFC pero por temás de seguridad esta funcionalidad se ha sustituido por una simulación del gesto de pagar _contactless_.
+3. No es una función extra como tal, pero se añade la posibilidad de ordenar los productos en la lista de favoritos al igual que se requiere en el carrito.
+
 
 ## FAQ
 
 ### Página Principal
 1. #### ¿Desde la página principal, cómo uso la app?
-      1. Si eres empleado, introduce tu código de acceso
+      1. Si eres empleado, introduce tu código de acceso (1234)
       2. Si eres cliente, pulsa el botón
 
 ### Página de Cliente
