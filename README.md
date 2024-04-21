@@ -34,7 +34,7 @@ Dirigirse a [`http://localhost:3000`](http://localhost:3000) y conectar nuestro 
 
 ### Página Principal
 1. #### ¿Desde la página principal, cómo uso la app?
-      1. Si eres empleado, introduce tu código de acceso
+      1. Si eres empleado, introduce tu código de acceso (1234)
       2. Si eres cliente, pulsa el botón
 
 ### Página de Cliente
