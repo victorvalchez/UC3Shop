@@ -61,7 +61,7 @@ function clearCart() {
 
 document.getElementById('checkoutButton').addEventListener('click', function() {
   clearCart();
-  socket.emit('updateCart');
+  location.reload();
 });
 
 // Manejar la ayuda al cliente
