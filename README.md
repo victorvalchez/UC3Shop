@@ -45,7 +45,7 @@ Dirigirse a [`http://localhost:3000`](http://localhost:3000) y conectar nuestro 
      Gira tu móvil a la izquierda sobre el eje vertical
 
 3. #### ¿Desde la página del cliente, cómo escaneo un artículo?
-      Agita tu móvil y se abrirá la cámara
+      Agita tu móvil y se abrirá la cámara. Se puede usar escaneando la etiqueta en `./tags/ipad.png`
 
 4. #### ¿Desde la página del cliente, cómo salgo del escáner?
       Toca la pantalla fuera del recuadro del vídeo
