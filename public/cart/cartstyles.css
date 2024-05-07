@@ -175,10 +175,10 @@ button {
 
   #cartItems {
     display: grid;
-    grid-template-columns: 1fr; /* Display items in one column */
+    grid-template-columns: 1fr;
     gap: 20px;
     max-height: 500px;
-    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-y: auto;
   }
 
   #mainContainer {

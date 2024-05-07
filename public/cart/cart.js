@@ -54,7 +54,7 @@ socket.on('updateCart', async (cartItems) => {
     img.alt = item.product;
     img.className = 'item-image';
 
-    // Añade un borde rojo a los productos favoritos
+    // Añade un borde a los productos favoritos
     if (item.isFavorite) {
       img.style.border = '2px solid #FF2E82';
     }
