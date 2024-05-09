@@ -105,6 +105,7 @@ button:hover {
 .item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: white; /* Add a white background */
   border-radius: 20px; /* Add rounded borders */
   padding: 10px; /* Add some padding */
@@ -123,6 +124,16 @@ button:hover {
   display: block;
   margin: 0;
   color: #222222;
+}
+
+.add-to-cart-button {
+  background-color: #FF2E82; /* Pink background */
+  color: white; /* White text */
+  padding: 5px 10px; /* Adjust padding to make the button smaller */
+  font-size: 0.8em; /* Adjust font size to make the text smaller */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 768px) {

@@ -82,6 +82,22 @@ socket.on('updateFavorites', (favoriteItems) => {
     itemDiv.appendChild(img);
     itemDiv.appendChild(textDiv);
 
+    // Create a new button element
+    const addToCartButton = document.createElement('button');
+    addToCartButton.textContent = 'Add to Cart';
+    addToCartButton.className = 'add-to-cart-button';
+    addToCartButton.style.backgroundColor = '#FF2E82';
+    addToCartButton.style.color = 'white';
+
+    // Add an event listener to the button
+    addToCartButton.addEventListener('click', function() {
+      // Emit an event to add the item to the cart
+      socket.emit('addItem', item);
+    });
+
+    // Append the button to the itemDiv
+    itemDiv.appendChild(addToCartButton);
+
     favoriteItemsDiv.appendChild(itemDiv);
   });
 });
