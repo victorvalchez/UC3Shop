@@ -84,7 +84,7 @@ socket.on('updateFavorites', (favoriteItems) => {
 
     // Create a new button element
     const addToCartButton = document.createElement('button');
-    addToCartButton.textContent = 'Add to Cart';
+    addToCartButton.textContent = 'Añadir';
     addToCartButton.className = 'add-to-cart-button';
     addToCartButton.style.backgroundColor = '#FF2E82';
     addToCartButton.style.color = 'white';
